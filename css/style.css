@@ -1,0 +1,140 @@
+/* ==========================================================================
+   Template de site para comércio local - Estilos
+   As cores reais vêm de js/config.js (aplicadas via JavaScript em tempo de
+   execução). Os valores abaixo em :root são apenas um fallback visual caso
+   o JS ainda não tenha rodado.
+   ========================================================================== */
+
+:root {
+    --cor-primaria: #2f6f4e;
+    --cor-primaria-escura: #234f38;
+    --cor-destaque: #f2a541;
+    --cor-fundo-claro: #f7f4ee;
+}
+
+body {
+    background-color: var(--cor-fundo-claro);
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* --- Link de acessibilidade "Pular para o conteúdo" --- */
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    background: var(--cor-primaria-escura);
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    z-index: 2000;
+    border-radius: 0 0 0.5rem 0;
+}
+.skip-link:focus {
+    left: 0;
+    top: 0;
+}
+
+/* --- Cabeçalho / navbar --- */
+.navbar-negocio {
+    background-color: var(--cor-primaria);
+}
+.navbar-negocio .navbar-brand,
+.navbar-negocio .nav-link {
+    color: #ffffff;
+}
+.navbar-negocio .nav-link.active {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+.navbar-negocio .nav-link:hover,
+.navbar-negocio .nav-link:focus {
+    color: var(--cor-destaque);
+}
+
+/* --- Faixa de status (aberto/fechado + saudação) --- */
+#status-loja {
+    border-left: 6px solid var(--cor-primaria);
+    font-weight: 500;
+}
+#status-loja.status-fechado {
+    border-left-color: #b02a37;
+}
+
+/* --- Carrossel da página inicial --- */
+.carousel-item img {
+    height: 380px;
+    object-fit: cover;
+    filter: brightness(0.65);
+    background-color: var(--cor-primaria-escura); /* aparece se a imagem não carregar */
+}
+.carousel-caption {
+    bottom: 45%;
+}
+.carousel-caption h2 {
+    font-weight: 700;
+}
+
+/* --- Cards de produtos e serviços --- */
+.card-produto img,
+.card-servico img {
+    height: 200px;
+    object-fit: cover;
+    background-color: #e9e9e9;
+}
+.card-produto .card-title,
+.card-servico .card-title {
+    color: var(--cor-primaria-escura);
+}
+.preco {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--cor-primaria-escura);
+}
+
+.btn-filtro.active {
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+    color: #fff;
+}
+
+.btn-destaque {
+    background-color: var(--cor-destaque);
+    border-color: var(--cor-destaque);
+    color: #212529;
+}
+.btn-destaque:hover {
+    background-color: var(--cor-destaque);
+    opacity: 0.9;
+    color: #212529;
+}
+
+/* --- Formulário de agendamento --- */
+.form-section-title {
+    border-bottom: 2px solid var(--cor-primaria);
+    padding-bottom: 0.35rem;
+    margin-top: 2rem;
+    color: var(--cor-primaria-escura);
+}
+#resumo-agendamento {
+    display: none;
+    border: 2px dashed var(--cor-primaria);
+    background-color: #eef6f0;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--cor-destaque);
+    outline-offset: 2px;
+}
+
+/* --- Rodapé --- */
+footer {
+    background-color: var(--cor-primaria-escura);
+    color: #f1f1f1;
+}
+footer a {
+    color: #ffffff;
+}

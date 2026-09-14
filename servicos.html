@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços - Pet da Pri | Banho e Tosa em Camaquã/RS</title>
+    <meta name="description" content="Conheça os serviços de banho e tosa da Pet da Pri em Camaquã/RS, com opção de tele-busca.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
+
+    <header id="cabecalho"></header>
+
+    <main id="conteudo-principal" class="container py-4">
+        <h1>Nossos Serviços</h1>
+        <p>Conheça os serviços que oferecemos.</p>
+
+        <div class="alert alert-info">
+            <strong>Como funciona a tele-busca:</strong> buscamos o seu pet, realizamos o banho/tosa
+            em nosso espaço de atendimento, e devolvemos ele no endereço combinado. O banho e a tosa
+            <strong>não são feitos na casa do cliente</strong> — se preferir, você também pode trazer
+            e buscar o pet pessoalmente (opção "Entrega no local").
+        </div>
+
+        <!-- Cards de serviço, gerados a partir de SITE_DATA.servicos -->
+        <div id="lista-servicos" class="row row-cols-1 row-cols-md-2 g-4 mb-4"></div>
+
+        <div class="text-center">
+            <a href="agendamento.html" class="btn btn-lg btn-destaque">Fazer cadastro e agendar agora</a>
+        </div>
+    </main>
+
+    <footer id="rodape"></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
