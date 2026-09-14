@@ -133,7 +133,7 @@ function renderizarCarrossel() {
         return (
             '<div class="carousel-item' + (i === 0 ? " active" : "") + '">' +
             '  <img src="' + slide.imagem + '" class="d-block w-100" alt="' + escaparTexto(slide.alt) + '">' +
-            '  <div class="carousel-caption d-none d-md-block">' +
+            '  <div class="carousel-caption ">' +
             "    <h2>" + escaparTexto(slide.titulo) + "</h2>" +
             "    <p>" + escaparTexto(slide.subtitulo) + "</p>" +
             "  </div>" +
