@@ -60,15 +60,33 @@ body {
     border-left-color: #b02a37;
 }
 
-/* --- Carrossel da página inicial --- */
+/* --- Títulos em negrito (o Bootstrap usa peso 500 por padrão) --- */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight: 700;
+}
+
+/* --- Carrossel da página inicial ---
+   Fica dentro de um .container (largura do conteúdo, com margens nas
+   laterais), altura fixa e cantos arredondados. */
+.carrossel-home {
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
 .carousel-item img {
-    height: 380px;
+    height: 420px;
     object-fit: cover;
     filter: brightness(0.65);
     background-color: var(--cor-primaria-escura); /* aparece se a imagem não carregar */
 }
+@media (max-width: 767.98px) {
+    .carousel-item img {
+        height: 240px;
+    }
+}
 .carousel-caption {
-    bottom: 45%;
+    bottom: 40%;
 }
 .carousel-caption h2 {
     font-weight: 700;
@@ -137,4 +155,81 @@ footer {
 }
 footer a {
     color: #ffffff;
+}
+
+/* --- Pop-up de loja fechada --- */
+.popup-fechado {
+    border-top: 6px solid var(--cor-primaria);
+    border-radius: 1rem;
+}
+
+/* --- Mapa e botão do Waze (página de Contato) --- */
+.mapa-loja {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background-color: #e9e9e9;
+}
+.mapa-loja iframe {
+    display: block;
+    width: 100%;
+    height: 360px;
+    border: 0;
+}
+@media (max-width: 767.98px) {
+    .mapa-loja iframe {
+        height: 260px;
+    }
+}
+.btn-waze {
+    background-color: #33ccff;
+    border-color: #33ccff;
+    color: #0b2e3a;
+    font-weight: 600;
+}
+.btn-waze:hover,
+.btn-waze:focus {
+    background-color: #1fb8ec;
+    border-color: #1fb8ec;
+    color: #0b2e3a;
+}
+
+/* --- Área do cliente --- */
+.btn-primary-marca {
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+    color: #fff;
+}
+.btn-primary-marca:hover,
+.btn-primary-marca:focus {
+    background-color: var(--cor-primaria-escura);
+    border-color: var(--cor-primaria-escura);
+    color: #fff;
+}
+.barra-usuario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+}
+.barra-usuario.d-none {
+    display: none !important;
+}
+
+/* --- Meus dados (entrar.html) --- */
+.meus-dados-lista {
+    background-color: var(--cor-fundo-claro);
+    border-radius: 0.5rem;
+    padding: 0.25rem 1rem 0.75rem;
+}
+.zona-perigo {
+    border: 2px solid #f1aeb5;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    background-color: #fff5f5;
 }
