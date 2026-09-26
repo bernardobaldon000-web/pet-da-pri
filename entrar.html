@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área do Cliente - Pet da Pri | Banho, Tosa e Vacina para Cães em Camaquã/RS</title>
+    <meta name="description" content="Entre ou crie sua conta na Pet da Pri para agendar banho, tosa e vacina do seu cão sem precisar digitar seus dados toda vez.">
+    <meta name="robots" content="noindex">
+
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <meta name="theme-color" content="#17a2b8">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
+
+    <header id="cabecalho"></header>
+
+    <main id="conteudo-principal" class="container py-4">
+        <h1>Área do Cliente</h1>
+        <p class="lead">Crie sua conta uma vez e agende os próximos banhos sem precisar digitar tudo de novo.</p>
+
+        <div id="pagina-entrar">
+
+            <!-- ============ JÁ CONECTADO ============ -->
+            <div id="bloco-conectado" class="d-none">
+                <div class="card p-4">
+                    <p class="mb-3">Você está conectado como <strong id="email-conectado"></strong>.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="agendamento.html" class="btn btn-destaque">Agendar um horário</a>
+                        <button type="button" id="botao-sair" class="btn btn-outline-secondary">Sair da conta</button>
+                    </div>
+                </div>
+
+                <!-- ============ MEUS DADOS (LGPD) ============ -->
+                <section id="meus-dados" class="card p-4 mt-4" aria-labelledby="titulo-meus-dados">
+                    <h2 class="h4" id="titulo-meus-dados">Meus dados e privacidade</h2>
+                    <p class="small text-muted">Tudo o que a Pet da Pri guarda sobre você e seu cão. Você pode ver, corrigir, baixar ou apagar quando quiser.</p>
+
+                    <div id="meus-dados-conteudo" class="meus-dados-lista mb-3">
+                        <p class="text-muted mb-0">Carregando...</p>
+                    </div>
+
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="agendamento.html" class="btn btn-outline-secondary btn-sm">✏️ Corrigir meus dados</a>
+                        <button type="button" id="botao-baixar-dados" class="btn btn-outline-secondary btn-sm">📥 Baixar uma cópia</button>
+                        <button type="button" id="botao-abrir-excluir" class="btn btn-outline-danger btn-sm">🗑️ Excluir minha conta</button>
+                    </div>
+
+                    <!-- Confirmação da exclusão -->
+                    <form id="excluir-conta" class="zona-perigo mt-4 d-none" novalidate>
+                        <h3 class="h5 text-danger">Excluir minha conta</h3>
+                        <p class="small mb-2">
+                            Isso apaga <strong>de vez</strong> a sua conta, seus dados, os dados do seu cão e o histórico de pedidos.
+                            Não dá pra desfazer. Conversas que já estão no WhatsApp da Priscila não são apagadas por aqui;
+                            para isso, <a id="link-apagar-whatsapp" href="#" target="_blank" rel="noopener">peça pelo WhatsApp</a>.
+                        </p>
+                        <label for="excluir-senha" class="form-label small">Para confirmar, digite sua senha</label>
+                        <input type="password" id="excluir-senha" class="form-control mb-3" autocomplete="current-password" required>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="submit" class="btn btn-danger">Excluir tudo</button>
+                            <button type="button" id="botao-cancelar-excluir" class="btn btn-outline-secondary">Cancelar</button>
+                        </div>
+                        <div id="msg-excluir" role="alert" aria-live="polite"></div>
+                    </form>
+                </section>
+            </div>
+
+            <!-- ============ NÃO CONECTADO ============ -->
+            <div id="bloco-desconectado" class="row g-4">
+
+                <!-- Entrar -->
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body p-4">
+                            <h2 class="h4 card-title">Já tenho conta</h2>
+                            <form id="form-entrar" novalidate>
+                                <div class="mb-3">
+                                    <label for="entrar-email" class="form-label">E-mail</label>
+                                    <input type="email" class="form-control" id="entrar-email" autocomplete="email" required>
+                                </div>
+                                <div class="mb-2">
+                                    <label for="entrar-senha" class="form-label">Senha</label>
+                                    <input type="password" class="form-control" id="entrar-senha" autocomplete="current-password" required>
+                                </div>
+                                <p class="mb-3"><a href="#" id="link-esqueci" class="small">Esqueci minha senha</a></p>
+                                <button type="submit" class="btn btn-destaque w-100">Entrar</button>
+                                <div id="msg-entrar" role="alert" aria-live="polite"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Criar conta -->
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body p-4">
+                            <h2 class="h4 card-title">Primeira vez aqui?</h2>
+                            <p class="small text-muted">Só e-mail e senha agora. Os dados do seu cão você completa na hora do primeiro agendamento.</p>
+                            <form id="form-criar" novalidate>
+                                <div class="mb-3">
+                                    <label for="criar-email" class="form-label">E-mail</label>
+                                    <input type="email" class="form-control" id="criar-email" autocomplete="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="criar-senha" class="form-label">Crie uma senha</label>
+                                    <input type="password" class="form-control" id="criar-senha" autocomplete="new-password" minlength="6" required aria-describedby="dica-senha">
+                                    <div id="dica-senha" class="form-text">Pelo menos 6 caracteres.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="criar-senha-confirmar" class="form-label">Repita a senha</label>
+                                    <input type="password" class="form-control" id="criar-senha-confirmar" autocomplete="new-password" minlength="6" required>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="criar-aceite" required>
+                                    <label class="form-check-label small" for="criar-aceite">
+                                        Li e concordo com os <a href="termos.html#termos" target="_blank" rel="noopener">termos de atendimento</a>
+                                        e com a <a href="termos.html#privacidade" target="_blank" rel="noopener">política de privacidade</a> (LGPD).
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary-marca w-100">Criar minha conta</button>
+                                <div id="msg-criar" role="alert" aria-live="polite"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-center small text-muted mt-4">
+            Prefere não criar conta? Fale com a gente direto pelo <a id="entrar-whatsapp" href="contato.html">WhatsApp</a>.
+        </p>
+    </main>
+
+    <footer id="rodape"></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById("entrar-whatsapp").href = linkWhatsAppSimples();
+        document.getElementById("entrar-whatsapp").target = "_blank";
+    </script>
+    <script type="module" src="js/conta.js"></script>
+</body>
+</html>

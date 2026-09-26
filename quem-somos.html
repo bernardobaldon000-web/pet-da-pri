@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quem Somos - Pet da Pri | Banho, Tosa e Vacina para Cães em Camaquã/RS</title>
+    <meta name="description" content="Conheça a Pet da Pri e a Priscila Fraga Medeiros, médica-veterinária formada pela UniRitter, responsável pelo banho, tosa e vacina do seu cão em Camaquã/RS.">
+
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <meta name="theme-color" content="#17a2b8">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .avatar-pri {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--cor-primaria);
+            flex-shrink: 0;
+        }
+        .linha-tempo {
+            border-left: 3px solid var(--cor-primaria);
+            padding-left: 1.25rem;
+            margin-left: 0.5rem;
+        }
+        .linha-tempo .marco {
+            position: relative;
+            padding-bottom: 1.75rem;
+        }
+        .linha-tempo .marco:last-child {
+            padding-bottom: 0;
+        }
+        .linha-tempo .marco::before {
+            content: "";
+            position: absolute;
+            left: -1.56rem;
+            top: 0.2rem;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: var(--cor-destaque);
+            border: 3px solid var(--cor-primaria-escura);
+        }
+        .linha-tempo .marco .ano {
+            font-weight: 700;
+            color: var(--cor-primaria-escura);
+        }
+    </style>
+</head>
+<body>
+
+    <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
+
+    <header id="cabecalho"></header>
+
+    <main id="conteudo-principal" class="container py-4">
+        <h1>Quem Somos</h1>
+        <p class="lead">A história por trás do cuidado com o seu cão, aqui em Camaquã/RS.</p>
+
+        <div class="alert alert-warning mt-3">
+            <strong>Atendimento exclusivo para cães.</strong> No momento não atendemos gatos.
+        </div>
+
+        <!-- ============ QUEM SOU EU ============ -->
+        <section class="mt-4">
+            <h2>Quem sou eu?</h2>
+            <div class="d-flex flex-column flex-sm-row gap-4 align-items-start align-items-sm-center mt-3">
+                <img src="images/priscila-formatura.webp" alt="Priscila Fraga Medeiros, em sua formatura de Medicina Veterinária" class="avatar-pri">
+                <div>
+                    <p class="mb-1"><strong>Meu nome é Priscila Fraga Medeiros.</strong></p>
+                    <p class="mb-0">
+                        Sou médica-veterinária, formada pela <a href="https://www.uniritter.edu.br/" target="_blank" rel="noopener">UniRitter</a>
+                        em agosto de 2025. Fundei a Pet da Pri porque acredito que cuidar de um cão vai muito além do
+                        banho e da tosa: é sobre atenção, carinho e, agora, também segurança médica em cada atendimento.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ NOSSA HISTÓRIA (LINHA DO TEMPO) ============ -->
+        <section class="mt-5">
+            <h2>Nossa história</h2>
+            <div class="linha-tempo mt-3">
+                <div class="marco">
+                    <p class="ano mb-1">2018</p>
+                    <p class="mb-0">A Pet da Pri nasceu em Camaquã/RS, oferecendo banho e tosa com muito carinho para os cães da cidade.</p>
+                </div>
+                <div class="marco">
+                    <p class="ano mb-1">Agosto de 2025</p>
+                    <p class="mb-0">Me formei em Medicina Veterinária pela UniRitter, trazendo ainda mais conhecimento e segurança para o atendimento de cada cliente.</p>
+                </div>
+                <div class="marco">
+                    <p class="ano mb-1">Hoje</p>
+                    <p class="mb-0">Além do banho e da tosa, também aplico vacina — tudo no mesmo espaço de confiança, com atendimento no local ou tele-busca.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ POR QUE ESCOLHER A PET DA PRI ============ -->
+        <section class="mt-5">
+            <h2>Por que escolher a Pet da Pri?</h2>
+            <ul class="row list-unstyled mt-2" id="quem-somos-diferenciais">
+                <li class="col-md-6 mb-3">✅ Atendimento exclusivo para cães.</li>
+                <li class="col-md-6 mb-3">✅ Desde 2018 cuidando dos cães de Camaquã/RS.</li>
+                <li class="col-md-6 mb-3">✅ Médica-veterinária formada pela UniRitter (2025).</li>
+                <li class="col-md-6 mb-3">✅ Banho, tosa e vacina com produtos de qualidade.</li>
+                <li class="col-md-6 mb-3">✅ Tele-busca disponível para sua comodidade.</li>
+                <li class="col-md-6 mb-3">✅ Atendimento próximo e de confiança, direto com a Priscila.</li>
+            </ul>
+        </section>
+
+        <div class="text-center mt-4">
+            <a href="agendamento.html" class="btn btn-lg btn-destaque">Fazer cadastro e agendar agora</a>
+        </div>
+    </main>
+
+    <footer id="rodape"></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

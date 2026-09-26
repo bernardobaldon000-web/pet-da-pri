@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendamento - Pet da Pri | Banho e Tosa em Camaquã/RS</title>
-    <meta name="description" content="Agende o banho e tosa do seu pet com a Pet da Pri em Camaquã/RS. Cadastro rápido e confirmação pelo WhatsApp.">
+    <title>Agendamento - Pet da Pri | Banho, Tosa e Vacina para Cães em Camaquã/RS</title>
+    <meta name="description" content="Agende o banho, tosa ou vacina do seu cão com a Pet da Pri em Camaquã/RS. Cadastro rápido e confirmação pelo WhatsApp.">
+
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <meta name="theme-color" content="#17a2b8">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -19,8 +24,49 @@
         <h1>Cadastro e Agendamento</h1>
         <p>Preencha seus dados, os dados do seu pet e escolha o serviço, a forma de atendimento, a data e o horário desejados.</p>
 
+        <div class="alert alert-info">
+            <strong>Agende com antecedência:</strong> temos bastante clientes fixos durante a semana,
+            então os horários costumam lotar rápido — garanta o seu com alguns dias de antecedência.
+        </div>
+
+        <!-- ============ ÁREA DO CLIENTE (js/conta.js) ============
+             Estes blocos só aparecem quando o login com Firebase estiver
+             ativado em js/firebase-config.js. Sem isso, o formulário
+             funciona como antes. -->
+        <p id="carregando-conta" class="text-muted d-none">Carregando sua conta...</p>
+
+        <div id="area-login-necessario" class="card p-4 text-center d-none">
+            <h2 class="h4">Entre na sua conta para agendar</h2>
+            <p class="mb-3">Com a conta, seus dados e os do seu cão ficam salvos e os próximos agendamentos levam segundos.</p>
+            <div class="d-flex flex-wrap gap-2 justify-content-center">
+                <a id="link-entrar-agendamento" href="entrar.html" class="btn btn-destaque">Entrar ou criar conta</a>
+            </div>
+        </div>
+
+        <div id="barra-usuario" class="barra-usuario d-none">
+            <span>Conectado como <strong id="email-usuario"></strong></span>
+            <button type="button" id="botao-sair-agendamento" class="btn btn-link btn-sm p-0">Sair</button>
+        </div>
+
         <form id="form-agendamento" novalidate>
 
+            <div id="aviso-completar-cadastro" class="alert alert-success d-none">
+                <strong>Conta criada! 🐾</strong> Agora complete seus dados e os do seu cão. É só dessa vez:
+                nos próximos agendamentos eles já vêm preenchidos.
+            </div>
+
+            <!-- Resumo da ficha salva (aparece quando o cliente já tem cadastro) -->
+            <div id="resumo-cadastro" class="card p-3 mb-2 d-none">
+                <div class="d-flex justify-content-between align-items-start gap-3">
+                    <div>
+                        <h2 class="h5 mb-2">Seus dados</h2>
+                        <div id="resumo-cadastro-texto"></div>
+                    </div>
+                    <button type="button" id="botao-editar-cadastro" class="btn btn-outline-secondary btn-sm">Editar</button>
+                </div>
+            </div>
+
+            <div id="bloco-cadastro">
             <!-- ============ DADOS DO CLIENTE ============ -->
             <h2 class="h4 form-section-title">Dados do Cliente</h2>
             <div class="row g-3">
@@ -52,7 +98,7 @@
                 <fieldset class="col-12">
                     <legend class="col-form-label pt-0">Sexo</legend>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="sexo-cliente" id="sexo-feminino" value="feminino" checked>
+                        <input class="form-check-input" type="radio" name="sexo-cliente" id="sexo-feminino" value="feminino">
                         <label class="form-check-label" for="sexo-feminino">Feminino</label>
                     </div>
                     <div class="form-check form-check-inline">
@@ -117,6 +163,8 @@
                 </div>
             </div>
 
+            </div><!-- /#bloco-cadastro -->
+
             <!-- ============ SERVIÇO E AGENDAMENTO ============ -->
             <h2 class="h4 form-section-title">Serviço e Agendamento</h2>
             <div class="row g-3">
@@ -152,7 +200,16 @@
                 <div class="col-12">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="aceite-termos" name="aceite-termos" required>
-                        <label class="form-check-label" for="aceite-termos">Li e concordo com os termos de atendimento. *</label>
+                        <label class="form-check-label" for="aceite-termos">
+                            Li e concordo com os <a href="termos.html#termos" target="_blank" rel="noopener">termos de atendimento</a>. *
+                        </label>
+                    </div>
+                    <div class="form-check mt-2">
+                        <input class="form-check-input" type="checkbox" id="aceite-lgpd" name="aceite-lgpd" required>
+                        <label class="form-check-label" for="aceite-lgpd">
+                            Autorizo o uso dos meus dados e dos dados do meu pet para realizar o agendamento e o atendimento,
+                            conforme a <a href="termos.html#privacidade" target="_blank" rel="noopener">política de privacidade</a> (LGPD). *
+                        </label>
                     </div>
                 </div>
             </div>
@@ -164,13 +221,16 @@
         </form>
 
         <div id="resumo-agendamento" class="card p-3 mt-4" role="status" aria-live="polite"></div>
+        <p id="status-salvamento" class="small mb-2" role="status" aria-live="polite"></p>
     </main>
 
     <footer id="rodape"></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/firebase-config.js"></script>
     <script src="js/config.js"></script>
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
+    <script type="module" src="js/conta.js"></script>
 </body>
 </html>

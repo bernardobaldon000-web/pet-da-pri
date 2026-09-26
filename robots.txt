@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://SEU-USUARIO.github.io/pet-da-pri/sitemap.xml
+Sitemap: https://bernardobaldon000-web.github.io/pet-da-pri-prototipo/sitemap.xml

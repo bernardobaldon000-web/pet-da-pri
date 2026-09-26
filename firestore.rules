@@ -1,0 +1,54 @@
+// ============================================================================
+// Regras de segurança do Firestore - Pet da Pri
+// ============================================================================
+// Como publicar: no console do Firebase, vá em Firestore Database › Regras,
+// apague o que estiver lá, cole este arquivo inteiro e clique em Publicar.
+//
+// O que estas regras garantem:
+// - Só quem está logado acessa alguma coisa.
+// - Cada cliente lê e edita SÓ a própria ficha (clientes/{uid}).
+// - Cada cliente pode criar e ver os próprios pedidos de agendamento, mas não
+//   pode alterar um pedido depois de enviado. Pode apagar tudo ao excluir a
+//   conta (direito garantido pela LGPD).
+// - Ninguém consegue listar os clientes dos outros.
+// ============================================================================
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function ehODono(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+
+    // Ficha do cliente: dados pessoais + dados do pet
+    match /clientes/{uid} {
+      allow read, delete: if ehODono(uid);
+      allow create, update: if ehODono(uid)
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.keys().hasOnly([
+             'nome', 'cpf', 'telefone', 'email', 'endereco', 'sexo',
+             'aceitaWhatsapp', 'pet', 'aceiteTermosEm', 'atualizadoEm'
+           ]);
+
+      // Pedidos de agendamento do cliente
+      match /agendamentos/{agendamentoId} {
+        allow read: if ehODono(uid);
+        allow create: if ehODono(uid)
+          && request.resource.data.status == 'solicitado'
+          && request.resource.data.servicos is list
+          && request.resource.data.servicos.size() > 0
+          && request.resource.data.servicos.size() <= 5;
+        allow update: if false;
+        // O cliente pode apagar os próprios pedidos ao excluir a conta (LGPD).
+        allow delete: if ehODono(uid);
+      }
+    }
+
+    // Qualquer outro caminho: bloqueado
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
