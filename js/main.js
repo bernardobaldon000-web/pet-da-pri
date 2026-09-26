@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     renderizarFiltroECategorias();  // só se a página tiver #lista-categorias
     renderizarServicos();           // só se a página tiver #lista-servicos
     renderizarContato();            // só se a página tiver #contato-canais / #contato-horario
-    renderizarDireitosLGPD();       // só se a página tiver #direitos-lgpd (termos.html)
+    esconderTextosDeConta();        // trechos .so-com-conta só aparecem com o login ativo
 
     atualizarAnoRodape();
     exibirStatusDaLoja();
@@ -612,74 +612,13 @@ function montarResumoAgendamento(dados) {
     resumo.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
-/* --------------------------------------------------------------------------
- * Direitos da LGPD (termos.html): um card por direito, com botão que abre o
- * WhatsApp já com a mensagem pronta e, se a Área do Cliente estiver ativa,
- * um atalho para resolver sozinho na hora.
- * ------------------------------------------------------------------------ */
-function renderizarDireitosLGPD() {
-    const alvo = document.getElementById("direitos-lgpd");
-    if (!alvo) return;
-
+/* Trechos marcados com .so-com-conta falam da Área do Cliente e só aparecem
+ * quando o login (Firebase) está ativo. */
+function esconderTextosDeConta() {
     const temConta = !!window.FIREBASE_CONFIG;
     document.querySelectorAll(".so-com-conta").forEach(function (el) {
         el.classList.toggle("d-none", !temConta);
     });
-
-    const direitos = [
-        {
-            icone: "👀", titulo: "Ver meus dados",
-            texto: "Saber quais dados seus e do seu cão nós temos.",
-            mensagem: "Olá! Gostaria de saber quais dados meus vocês têm guardados (LGPD).",
-            conta: { href: "entrar.html#meus-dados", texto: "Ver agora" },
-        },
-        {
-            icone: "✏️", titulo: "Corrigir meus dados",
-            texto: "Arrumar um telefone, endereço ou dado do cão que esteja errado.",
-            mensagem: "Olá! Gostaria de corrigir alguns dos meus dados cadastrados (LGPD).",
-            conta: { href: "agendamento.html", texto: "Editar agora" },
-        },
-        {
-            icone: "📥", titulo: "Receber uma cópia",
-            texto: "Receber um arquivo com todos os seus dados.",
-            mensagem: "Olá! Gostaria de receber uma cópia dos meus dados (LGPD).",
-            conta: { href: "entrar.html#meus-dados", texto: "Baixar agora" },
-        },
-        {
-            icone: "🔕", titulo: "Parar as mensagens",
-            texto: "Não receber mais confirmações e lembretes pelo WhatsApp.",
-            mensagem: "Olá! Não quero mais receber lembretes e confirmações pelo WhatsApp.",
-            conta: null,
-        },
-        {
-            icone: "🗑️", titulo: "Apagar meus dados",
-            texto: "Apagar seus dados e a sua conta de vez.",
-            mensagem: "Olá! Gostaria que vocês apagassem todos os meus dados (LGPD).",
-            conta: { href: "entrar.html#excluir-conta", texto: "Excluir conta" },
-        },
-    ];
-
-    const numero = numeroComDDI(SITE_CONFIG.contato.whatsapp);
-    alvo.innerHTML = direitos.map(function (d) {
-        const linkWpp = "https://wa.me/" + numero + "?text=" + encodeURIComponent(d.mensagem);
-        const botaoConta = temConta && d.conta
-            ? '<a class="btn btn-outline-secondary btn-sm" href="' + d.conta.href + '">' + escaparTexto(d.conta.texto) + "</a>"
-            : "";
-        return (
-            '<div class="col">' +
-            '  <div class="card h-100 card-direito">' +
-            '    <div class="card-body d-flex flex-column">' +
-            '      <h4 class="h6 card-title"><span aria-hidden="true">' + d.icone + "</span> " + escaparTexto(d.titulo) + "</h4>" +
-            '      <p class="card-text small flex-grow-1">' + escaparTexto(d.texto) + "</p>" +
-            '      <div class="d-flex flex-wrap gap-2">' +
-            '        <a class="btn btn-success btn-sm" href="' + linkWpp + '" target="_blank" rel="noopener">Pedir pelo WhatsApp</a>' +
-            botaoConta +
-            "      </div>" +
-            "    </div>" +
-            "  </div>" +
-            "</div>"
-        );
-    }).join("");
 }
 
 /* --------------------------------------------------------------------------
