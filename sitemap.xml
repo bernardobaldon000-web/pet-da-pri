@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  IMPORTANTE: troque "https://bernardobaldon000-web.github.io/pet-da-pri-prototipo/" abaixo pelo
+  IMPORTANTE: troque "https://bernardobaldon000-web.github.io/pet-da-pri/" abaixo pelo
   endereço real do site depois de publicado no GitHub Pages.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://bernardobaldon000-web.github.io/pet-da-pri-prototipo/index.html</loc>
+    <loc>https://bernardobaldon000-web.github.io/pet-da-pri/index.html</loc>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://bernardobaldon000-web.github.io/pet-da-pri-prototipo/quem-somos.html</loc>
+    <loc>https://bernardobaldon000-web.github.io/pet-da-pri/quem-somos.html</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bernardobaldon000-web.github.io/pet-da-pri-prototipo/servicos.html</loc>
+    <loc>https://bernardobaldon000-web.github.io/pet-da-pri/servicos.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bernardobaldon000-web.github.io/pet-da-pri-prototipo/agendamento.html</loc>
+    <loc>https://bernardobaldon000-web.github.io/pet-da-pri/agendamento.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bernardobaldon000-web.github.io/pet-da-pri-prototipo/contato.html</loc>
+    <loc>https://bernardobaldon000-web.github.io/pet-da-pri/contato.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bernardobaldon000-web.github.io/pet-da-pri-prototipo/termos.html</loc>
+    <loc>https://bernardobaldon000-web.github.io/pet-da-pri/termos.html</loc>
     <priority>0.3</priority>
   </url>
 </urlset>

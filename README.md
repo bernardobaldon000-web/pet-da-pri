@@ -63,7 +63,6 @@ Arquivos: `entrar.html`, `js/conta.js`, `js/firebase-config.js`, `firestore.rule
 - Ao enviar, o pedido continua indo pelo WhatsApp **e** também fica salvo no Firebase (`clientes/{id}/agendamentos`).
 - Cada cliente só enxerga os próprios dados (regras em `firestore.rules`).
 - **Meus dados e privacidade** (em `entrar.html`, com a conta aberta): o cliente vê tudo o que está guardado, baixa uma cópia em .txt e pode excluir a conta sozinho (pede a senha pra confirmar).
-- Na página de termos, os direitos da LGPD viraram cards com botões: "Pedir pelo WhatsApp" (mensagem pronta) e, com o login ativo, um atalho pra resolver na hora.
 
 **Para ativar:**
 1. Cole o `firebaseConfig` do seu projeto em `js/firebase-config.js`.
