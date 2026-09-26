@@ -11,10 +11,10 @@ window.SITE_CONFIG = {
 
     // --- Identidade ---
     nomeEmpresa: "Pet da Pri",
-    tagline: "Banho e tosa com todo o carinho que o seu pet merece.",
+    tagline: "Banho, tosa e vacina com todo o carinho que o seu cão merece.",
     logoEmoji: "🐾",
-    logoImagem: "images/logo.png", // logo real da cliente; se preenchido, é usado no lugar do emoji
-    tituloAba: "Pet da Pri - Banho e Tosa",
+    logoImagem: "images/logo.webp", // logo real da cliente; se preenchido, é usado no lugar do emoji
+    tituloAba: "Pet da Pri - Banho, Tosa e Vacina",
 
     // --- Paleta de cores (baseada no ciano/turquesa do logo da Pet da Pri) ---
     cores: {
@@ -29,14 +29,23 @@ window.SITE_CONFIG = {
         telefone: "(51) 99984-2681",
         whatsapp: "(51) 99984-2681",
         email: "fm.priscila@gmail.com",
-        endereco: "Rua 3 de Outubro, 705 - Olaria - Camaquã/RS - CEP 96180-000",
+        endereco: "Rua 3 de Outubro, 705 - Olaria - Camaquã/RS - CEP 96785-212",
         documento: "CNPJ: 30.322.736/0001-47",
+        // Usado no mapa e nos botões "Abrir no Waze" / "Abrir no Google Maps"
+        // da página de Contato (sem o CEP, que às vezes confunde a busca).
+        enderecoParaMapa: "Rua 3 de Outubro, 705 - Olaria, Camaquã - RS",
     },
 
-    // --- Horário de funcionamento --- (EXEMPLO — confirmar o horário real com a Priscila)
+    // --- Horário de funcionamento --- (REAL, confirmado com a Priscila)
+    // Segunda-feira: fechado. Terça a sexta: 9h às 18h.
+    // Sábado: ela NÃO abre todo sábado — quando abre, é das 9h ao meio-dia.
+    // Por isso o sábado não entra no cálculo automático de "aberto agora"
+    // (ver exibirStatusDaLoja em main.js) — o site sempre manda confirmar
+    // a disponibilidade de sábado pelo WhatsApp antes de agendar.
     horarios: {
-        segSex: { abre: 8, fecha: 18 },
-        sabado: { abre: 8, fecha: 13 },
+        tercaSexta: { abre: 9, fecha: 18 },
+        sabado: { abre: 9, fecha: 12 },
+        sabadoNemSempreAbre: true,
         domingoFechado: true,
     },
 
@@ -44,23 +53,29 @@ window.SITE_CONFIG = {
     home: {
         boasVindasTitulo: "Bem-vindo(a) à Pet da Pri!",
         boasVindasTexto:
-            "A Pet da Pri cuida do banho e da tosa do seu pet com atenção e carinho, em Camaquã/RS. " +
-            "Atendemos com hora marcada, no local ou com tele-busca, para facilitar a vida de quem tem " +
-            "um cão ou gato em casa.",
+            "A Pet da Pri cuida do banho, da tosa e da vacina do seu cão com atenção e carinho, em Camaquã/RS, " +
+            "desde 2018. A Priscila é médica-veterinária formada pela UniRitter (2025), o que dá ainda mais " +
+            "segurança na hora de cuidar do seu melhor amigo. Atendemos com hora marcada, no local ou com " +
+            "tele-busca, para facilitar a vida de quem tem um cachorro em casa.",
         diferenciais: [
-            "Atendimento próximo e de confiança, direto com a Priscila.",
-            "Banho e tosa com produtos de qualidade.",
+            "Atendimento exclusivo para cães.",
+            "Desde 2018 cuidando dos cães de Camaquã/RS.",
+            "Priscila é médica-veterinária formada pela UniRitter (2025).",
+            "Banho, tosa e vacina com produtos de qualidade.",
             "Tele-busca disponível para sua comodidade.",
             "Agendamento fácil, direto pelo site ou WhatsApp.",
         ],
     },
 
     // --- Imagens do carrossel da home ---
-    // EXEMPLO: banners gerados como placeholder. O ideal é trocar por fotos
-    // reais do espaço, do atendimento ou de pets já atendidos pela Priscila.
+    // O 1º slide é uma foto real de dois pugs clientes, tirada no espaço de
+    // atendimento da Pet da Pri (dá pra ver o logo pintado na parede atrás -
+    // images/dois-pugs-loja.webp). O 2º slide é o carro real da Pet da Pri,
+    // usado na tele-busca (images/carro-tele-busca.webp). O 3º slide já é uma
+    // foto real de dois cães clientes (images/slide3-cachorros.webp).
     carrossel: [
-        { imagem: "images/slide1.svg", alt: "Banho e Tosa - Pet da Pri", titulo: "Banho e Tosa", subtitulo: "Com todo o carinho que o seu pet merece." },
-        { imagem: "images/slide2.svg", alt: "Tele-busca disponível", titulo: "Tele-busca disponível", subtitulo: "A gente busca e entrega o seu pet, sem você sair de casa." },
-        { imagem: "images/slide3.svg", alt: "Agende pelo site", titulo: "Agende pelo site", subtitulo: "Escolha o dia e horário em poucos cliques." },
+        { imagem: "images/dois-pugs-loja.webp", alt: "Dois pugs clientes da Pet da Pri no espaço de atendimento", titulo: "Banho, Tosa e Vacina", subtitulo: "Com todo o carinho que o seu cão merece.", posicao: "center top" },
+        { imagem: "images/carro-tele-busca.webp", alt: "Carro da Pet da Pri usado na tele-busca", titulo: "Tele-busca disponível", subtitulo: "A gente busca e entrega o seu pet, sem você sair de casa.", posicao: "center 35%" },
+        { imagem: "images/slide3-cachorros.webp", alt: "Dois cães clientes da Pet da Pri, sorridentes após o atendimento", titulo: "Cada cão, um cuidado especial", subtitulo: "Clientes que já confiam na Pet da Pri.", posicao: "center 20%" },
     ],
 };
